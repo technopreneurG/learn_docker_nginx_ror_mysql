@@ -1,0 +1,19 @@
+version: '3'
+services:
+  db:
+    build: ./mysql
+    image: learn_docker_ror_mysql
+    network_mode: "bridge"
+    environment:
+      MYSQL_ROOT_PASSWORD: "my-pw"
+  web:
+    build: ./rorapp
+    image: learn_docker_ror_web
+    command: bundle exec rails s -p 3000 -b '0.0.0.0'
+    volumes:
+      - ./rorapp:/rorapp
+    ports:
+      - "3000:3000"
+    network_mode: "bridge"
+    links:
+      - db
