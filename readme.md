@@ -36,17 +36,18 @@ docker-compose -f docker-compose-run.yml up -d
 docker stats
 ```
 
-   Display the last 10 lines of logs from all containers, and follow the output
+      Display the last 10 lines of logs from all containers, and follow the output
 ```bash
 docker-compose -f docker-compose-run.yml logs --tail 10 -f
 ```
 
-   Display the last 10 lines of logs from RoR app, and follow the output
+      Display the last 10 lines of logs from RoR app, and follow the output
 ```bash
 docker-compose -f docker-compose-run.yml logs --tail 10 -f app
 ```
 
 * [optional] Re-create the RoR application files
+
    To start from scratch remove everything in rorapp folder except the Dockerfile. Then run:
 ```bash
 docker-compose -f docker-compose-build.yml run web rails new . --force --database=mysql
